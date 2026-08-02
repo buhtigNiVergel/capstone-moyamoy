@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+
+    <script src="react-basics.js"></script>
+
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      const socksPrice = 10;
+      const tshirtPrice = 8;
+      const productCost = socksPrice * 1 + tshirtPrice * 2;
+      const shippingCost = 5;
+      const totalCost = productCost + shippingCost;
+
+
+      const div = (
+        <div>
+          <p>Product cost: ${productCost}</p>
+          <p>Shipping cost: ${shippingCost}</p>
+          <p>Total cost: ${totalCost}</p>
+          <button>Place your order</button>
+          <p>Today is {dayjs().format('MMMM D')}</p>
+          <p>Current time: {dayjs().format('HH:mm:ss')}</p>
+        </div>
+      )
+
+
+      const container = document.querySelector('.js-container');
+      const root = ReactDOM.createRoot(container)
+
+
+      setInterval(() => {
+        root.render(<p>Current time: {dayjs().format('HH:mm:ss')}</p>);
+      }, 1000)
+    </script>
+  </body>
+</html>
