@@ -12,53 +12,41 @@
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     <script type="text/babel">
       function App() {
-        const [count, setCount] = React.useState(0)
+        return(
+          <AsYouType />
+        )
+      }
 
+      function AsYouType(){
+        const [inputText, setInputText] = React.useState('')
+
+        function placeText(event) {
+          setInputText(event.target.value)
+        }
+
+        function reset(){
+          setInputText('')
+        }
+
+        function example(){
+          setInputText('vergel')
+        }
         return(
           <>
-            <ClickButton 
-              count = {count}
-              setCount = {setCount}
-              behavior = 'add'
+            <input 
+              type="text" 
+              placeholder = 'Type a name here'
+              onChange = {placeText}
+              value = {inputText}
+              
             />
-            <ClickButton 
-              count = {count}
-              setCount = {setCount}
-              behavior = 'add'
-            />
-
-            <ClickButton 
-              count = {count}
-              setCount = {setCount}
-              behavior = 'reset'
-            />
+            <button onClick = {reset}>reset</button>
+            <button onClick = {example}>example</button>
+            <p>{inputText}</p>
           </>
         )
       }
 
-      function ClickButton( {count, setCount, behavior} ) {
-        return(
-          <>
-           {
-              behavior === 'reset' ? (
-                <button onClick={reset}>Reset</button>
-              ) : (
-                <button onClick={add}>
-                  Click {count} {count === 1 ? 'time' : 'times'}
-                </button>
-              )
-            }
-          </>
-        )
-
-        function add() {
-          setCount(count + 1);
-        }
-
-        function reset() {
-          setCount(0);
-        }
-      }
 
       const container = document.querySelector('.js-container');
       ReactDOM.createRoot(container).render(<App />);
