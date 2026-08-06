@@ -5,6 +5,8 @@
     <style>
         body{
             font-family: Arial, Helvetica, sans-serif;
+            margin-top: none;
+            margin-bottom: none;
         }
 
         .container{
@@ -42,6 +44,19 @@
         .password{
             margin-right: 5px;
         }
+
+        .timer-button{
+            background-color: rgb(25, 135, 84);
+        }
+
+        .timer-button.container{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            background-color: rgb(222, 222, 222);
+            align-items: center;
+            flex-direction: column;
+        }
     </style>
   </head>
   <body>
@@ -65,27 +80,49 @@
 
         function Timer(){
             const [time, setTime] = React.useState(dayjs().format('HH:mm:ss'));
+            const [count, setCount] = React.useState(0);
+            const buttonRef = React.useRef(null)
 
             React.useEffect(() => {
             setInterval(() => {
                 setTime(dayjs().format('HH:mm:ss'));
 
-
             }, 1000);
-            },[]);
-
-            const [count, setCount] = React.useState(0);
+            console.log('vergel pogi');
+            }, []);
 
             function increaseCount() {
             setCount(count + 1);
             }
 
+            function reset(){
+                setCount(0);
+            }
+
+            function autoClick(){
+                setInterval(() => {
+                buttonRef.current.click();
+                console.log('run');
+            }, 1000)
+            }
+
             return(
                 <>
                     <p>Current time: {time}</p>
-                    <button onClick={increaseCount}>
+                    <div className='timer-button-container'>
+                        <button onClick={increaseCount}
+                            ref = {buttonRef}
+                            className = 'timer-button'>
                             Clicked {count} {count === 1 ? 'time' : 'times'}
-          </button>
+                    
+                        </button>
+                        <button onClick = {reset}
+                                className = 'timer-button'>reset
+                        </button>
+                        <button onClick = {autoClick}
+                                className = 'timer-button'>Auto Click
+                        </button>
+                    </div>
                 </>
             )
         }

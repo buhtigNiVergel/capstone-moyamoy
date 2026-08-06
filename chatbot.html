@@ -73,6 +73,15 @@
         overflow: scroll;
         scrollbar-width: none;
       }
+
+      .default-message-container{
+        height: 100vh;
+      }
+
+      .loading-img{
+        height: 40px;
+        margin: -15px;
+      }
     </style>
   </head>
   <body>
@@ -110,7 +119,7 @@
          
           setChatMessages([
             ...newChatMessage,{
-              message: 'loading...',
+              message:  <img src="resources/loading-spinner.gif" className="loading-img" />,
               sender: 'robot',
               id: crypto.randomUUID()
             }
@@ -153,6 +162,14 @@
         )
       }
 
+      function DefaultMessage(){
+        return(
+          <div className='default-message-container'>
+            <p>Welcome to the chatbot project! send a message using the textbox below</p>
+          </div>
+        )
+      }
+
       function ChatMessage({ message, sender }){
         return(
           <div className = {
@@ -172,16 +189,23 @@
           </div>
         )
       }
-
-      function ChatMessages( {chatMessages} ){
-       const chatMessagesRef = React.useRef(null);
+      
+      function useAutoScroll(dependencies){
+        const containerRef = React.useRef(null);
 
         React.useEffect(() => {
-          const containerElem = chatMessagesRef.current;
+          const containerElem = containerRef.current;
           if (containerElem) {
             containerElem.scrollTop = containerElem.scrollHeight;
           }
-        }, [chatMessages]);
+        }, dependencies);
+
+        return containerRef
+
+      }
+
+      function ChatMessages( {chatMessages} ){
+       const chatMessagesRef = useAutoScroll([chatMessages]);
 
         return (
           <div className="chat-messages-container" ref={chatMessagesRef}>
@@ -199,32 +223,16 @@
       }
 
       function App() {
-        const [chatMessages, setChatMessages] = React.useState([{ 
-            message: 'Hello chatbot',
-            sender: 'user',
-            id: 'id1'
-          }, {
-            message: 'Hello! How can I help You?' ,
-            sender :'robot',
-            id: 'id2'
-          },{
-            message : 'can you get me todays date' ,
-            sender : 'user',
-            id: 'id3'
-          }, {
-            message : 'Today is August 2',
-            sender : 'robot',
-            id: 'id4'
-          }
-        ]
-        );
+        const [chatMessages, setChatMessages] = React.useState([]);
       
-      const [isLoading, setIsLoading] = React.useState(false)
+        const [isLoading, setIsLoading] = React.useState(false)
         return(
           <div className = "app-container">
-            <ChatMessages 
+            {chatMessages.length === 0 ? 
+              <DefaultMessage /> : 
+              <ChatMessages 
               chatMessages = {chatMessages}
-            />
+            />}
             <ChatInput 
               chatMessages = {chatMessages}
               setChatMessages = {setChatMessages}
