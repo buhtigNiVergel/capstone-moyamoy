@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lesson 4 exercise</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .container{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-text{
+            width: 250px;
+            border-radius: 5px;
+            border-width: 1px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .button{
+            width: 100px;
+            background-color: lightblue;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border-width: 1px;
+            border-radius: 5px;
+        }
+
+        .button-container{
+            display: flex;
+            margin-top: 15px;
+            gap: 8px;
+        }
+        
+        .email{
+            margin-bottom: 5px;
+        }
+
+        .password{
+            margin-right: 5px;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="js-container"></div>
+    
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+        function App(){
+            return(
+                <>
+                    <Timer />
+                </>
+            
+            )
+        }
+
+        function Timer(){
+            const [time, setTime] = React.useState(dayjs().format('HH:mm:ss'));
+
+            React.useEffect(() => {
+            setInterval(() => {
+                setTime(dayjs().format('HH:mm:ss'));
+
+
+            }, 1000);
+            },[]);
+
+            const [count, setCount] = React.useState(0);
+
+            function increaseCount() {
+            setCount(count + 1);
+            }
+
+            return(
+                <>
+                    <p>Current time: {time}</p>
+                    <button onClick={increaseCount}>
+                            Clicked {count} {count === 1 ? 'time' : 'times'}
+          </button>
+                </>
+            )
+        }
+
+        function Login() {
+            const [showPassword, setShowPassword] = React.useState(false);
+
+            function setPassword(){
+                if(showPassword === false){
+                    setShowPassword(true)
+                }else if(showPassword === true){
+                    setShowPassword(false)
+                }
+
+                console.log(showPassword);
+            }
+            return(
+                <>
+                    <div className = 'container'>
+                        <h1>Hello, welcome to my website</h1>
+
+                        <input  type="text" 
+                                required
+                                placeholder = "email"
+                                className = 'input-text email'/>
+                        <div className = 'password-container'>
+                            <input  type={showPassword === false ? 'password' : 'text'} 
+                                    required
+                                    placeholder = 'password'
+                                    className = 'input-text password'/> 
+                            <button onClick = {setPassword}
+                                className = 'password-button'>show</button>
+                        </div>
+
+                        <div className='button-container'>
+                            <button className='button'>Login</button>
+                            <button className='button'>Sign up</button>        
+                        </div>
+                    </div>
+                </>
+            )
+        }
+
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>
