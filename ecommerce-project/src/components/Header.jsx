@@ -1,17 +1,17 @@
-import { Link } from 'react-router';
-import './header.css';
+import { NavLink } from 'react-router';
+import './Header.css';
 
 export function Header(){
     return(
         <>
             <div className="header">
             <div className="left-section">
-                <Link to="/" className="header-Link">
+                <NavLink to="/" className="header-Link">
                 <img className="logo"
                     src="images/logo-white.png" />
                 <img className="mobile-logo"
                     src="images/mobile-logo-white.png" />
-                </Link>
+                </NavLink>
             </div>
 
             <div className="middle-section">
@@ -23,16 +23,16 @@ export function Header(){
             </div>
 
             <div className="right-section">
-                <Link className="orders-Link header-Link" to="/orders">
+                <NavLink className="orders-Link header-Link" to="/orders">
 
                     <span className="orders-text">Orders</span>
-                    </Link>
+                    </NavLink>
 
-                    <Link className="cart-Link header-Link" to="/checkout">
+                    <NavLink className="cart-Link header-Link" to="/checkout">
                     <img className="cart-icon" src="images/icons/cart-icon.png" />
                     <div className="cart-quantity">3</div>
                     <div className="cart-text">Cart</div>
-                </Link>
+                </NavLink>
             </div>
             </div>
         </>
