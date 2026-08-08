@@ -25,13 +25,13 @@ export function Header(){
             <div className="right-section">
                 <Link className="orders-Link header-Link" to="/orders">
 
-                <span className="orders-text">Orders</span>
-                </Link>
+                    <span className="orders-text">Orders</span>
+                    </Link>
 
-                <Link className="cart-Link header-Link" to="/checkout">
-                <img className="cart-icon" src="images/icons/cart-icon.png" />
-                <div className="cart-quantity">3</div>
-                <div className="cart-text">Cart</div>
+                    <Link className="cart-Link header-Link" to="/checkout">
+                    <img className="cart-icon" src="images/icons/cart-icon.png" />
+                    <div className="cart-quantity">3</div>
+                    <div className="cart-text">Cart</div>
                 </Link>
             </div>
             </div>
