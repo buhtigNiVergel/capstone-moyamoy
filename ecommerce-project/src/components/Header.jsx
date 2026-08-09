@@ -4,35 +4,35 @@ import './Header.css';
 export function Header(){
     return(
         <>
-            <div className="header">
-            <div className="left-section">
-                <NavLink to="/" className="header-Link">
-                <img className="logo"
+            <div class="header">
+            <div class="left-section">
+                <NavLink href="/" class="header-link">
+                <img class="logo"
                     src="images/logo-white.png" />
-                <img className="mobile-logo"
+                <img class="mobile-logo"
                     src="images/mobile-logo-white.png" />
                 </NavLink>
             </div>
 
-            <div className="middle-section">
-                <input className="search-bar" type="text" placeholder="Search" />
+            <div class="middle-section">
+                <input class="search-bar" type="text" placeholder="Search" />
 
-                <button className="search-button">
-                <img className="search-icon" src="images/icons/search-icon.png" />
+                <button class="search-button">
+                <img class="search-icon" src="images/icons/search-icon.png" />
                 </button>
             </div>
 
-            <div className="right-section">
-                <NavLink className="orders-Link header-Link" to="/orders">
+            <div class="right-section">
+                <NavLink class="orders-link header-link" href="/orders">
 
-                    <span className="orders-text">Orders</span>
-                    </NavLink>
-
-                    <NavLink className="cart-Link header-Link" to="/checkout">
-                    <img className="cart-icon" src="images/icons/cart-icon.png" />
-                    <div className="cart-quantity">3</div>
-                    <div className="cart-text">Cart</div>
+                <span class="orders-text">Orders</span>
                 </NavLink>
+
+                <a class="cart-link header-link" href="/checkout">
+                <img class="cart-icon" src="images/icons/cart-icon.png" />
+                <div class="cart-quantity">3</div>
+                <div class="cart-text">Cart</div>
+                </a>
             </div>
             </div>
         </>
