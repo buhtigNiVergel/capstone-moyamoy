@@ -6,7 +6,7 @@ import "./CheckoutPage.css";
 export function CheckoutPage({ cart }) {
   return (
     <>
-      <link rel="icon" type="image/svg+xml" href="/cart-favicon.png" />
+      <link rel="icon" type="image/svg+xml" href="./src/assets/images/cart-favicon.png" />
 
       <title>Checkout</title>
 
@@ -18,6 +18,7 @@ export function CheckoutPage({ cart }) {
         <div className="checkout-grid">
           <div className="order-summary">
             {cart.map((cartItem) => {
+              return(
               <div key={cartItem.productId} className="cart-item-container">
                 <div className="delivery-date">
                   Delivery date: Tuesday, June 21
@@ -99,7 +100,7 @@ export function CheckoutPage({ cart }) {
                     </div>
                   </div>
                 </div>
-              </div>;
+              </div>);
             })}
           </div>
 
