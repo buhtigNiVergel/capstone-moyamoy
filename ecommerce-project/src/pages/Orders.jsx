@@ -1,4 +1,5 @@
 import { Header } from '../components/Header'
+import buyAgain from '../assets/images/icons/buy-again.png'
 import './Orders.css';
 
 
@@ -51,7 +52,7 @@ export function Orders(){
                         Quantity: 1
                     </div>
                     <button className="buy-again-button button-primary">
-                        <img className="buy-again-icon" src="images/icons/buy-again.png" />
+                        <img className="buy-again-icon" src={buyAgain} />
                         <span className="buy-again-message">Add to Cart</span>
                     </button>
                     </div>
@@ -79,7 +80,7 @@ export function Orders(){
                         Quantity: 2
                     </div>
                     <button className="buy-again-button button-primary">
-                        <img className="buy-again-icon" src="images/icons/buy-again.png" />
+                        <img className="buy-again-icon" src={buyAgain} />
                         <span className="buy-again-message">Add to Cart</span>
                     </button>
                     </div>
@@ -130,7 +131,7 @@ export function Orders(){
                         Quantity: 2
                     </div>
                     <button className="buy-again-button button-primary">
-                        <img className="buy-again-icon" src="images/icons/buy-again.png" />
+                        <img className="buy-again-icon" src={buyAgain}/>
                         <span className="buy-again-message">Add to Cart</span>
                     </button>
                     </div>
@@ -138,7 +139,7 @@ export function Orders(){
                     <div className="product-actions">
                     <a href="/tracking">
                         <button className="track-package-button button-secondary">
-                        Track package
+                            Track package
                         </button>
                     </a>
                     </div>

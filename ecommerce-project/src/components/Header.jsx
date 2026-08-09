@@ -1,4 +1,6 @@
 import { NavLink } from 'react-router';
+import searchIcon from '../assets/images/icons/search-icon.png'
+import cartIcon from '../assets/images/icons/cart-icon.png'
 import './Header.css';
 
 export function Header(){
@@ -18,18 +20,18 @@ export function Header(){
                 <input class="search-bar" type="text" placeholder="Search" />
 
                 <button class="search-button">
-                <img class="search-icon" src="images/icons/search-icon.png" />
+                <img class="search-icon" src={searchIcon} />
                 </button>
             </div>
 
             <div class="right-section">
-                <NavLink class="orders-link header-link" href="/orders">
+                <NavLink class="orders-link header-link" to="/orders">
 
-                <span class="orders-text">Orders</span>
+                    <span class="orders-text">Orders</span>
                 </NavLink>
 
                 <a class="cart-link header-link" href="/checkout">
-                <img class="cart-icon" src="images/icons/cart-icon.png" />
+                <img class="cart-icon" src={cartIcon} />
                 <div class="cart-quantity">3</div>
                 <div class="cart-text">Cart</div>
                 </a>
