@@ -36,7 +36,7 @@ function App() {
 
       <Route 
         path="Tracking"
-        element={<Tracking />}/>
+        element={<Tracking cart ={cart}/>}/>
 
       <Route 
         path="*" 
