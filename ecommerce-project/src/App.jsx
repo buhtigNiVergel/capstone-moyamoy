@@ -31,7 +31,7 @@ function App() {
 
       <Route 
         path="Orders"
-        element={<Orders />} />
+        element={<Orders cart = {cart}/>} />
 
       <Route 
         path="Tracking"
