@@ -6,8 +6,10 @@ import { CheckoutPage } from './pages/checkout/CheckoutPage';
 import { Orders } from './pages/orders/Orders';
 import { Tracking } from './pages/Tracking';
 import { NotFoundPage } from './pages/NotFoundPage'
- 
 import './App.css'
+
+window.axios = axios;
+
 function App() {
 
   const [cart, setCart] = useState([])
