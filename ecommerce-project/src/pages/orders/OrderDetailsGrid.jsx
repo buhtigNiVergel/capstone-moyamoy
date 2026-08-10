@@ -1,6 +1,5 @@
 import {Fragment} from 'react'
 import dayjs from "dayjs";
-import { Link } from 'react-router';
 import buyAgain from "../../assets/images/icons/buy-again.png";
 
 export function OrderDetailsGrid( {order} ) {
@@ -26,11 +25,11 @@ export function OrderDetailsGrid( {order} ) {
             </div>
 
             <div className="product-actions">
-              <Link to={`/tracking/${order.orderID}/${orderProduct.productId}`}>
+              <a href={`/tracking/${order.id}/${orderProduct.product.id}`}>
                 <button className="track-package-button button-secondary">
                   Track package
                 </button>
-              </Link>
+              </a>
             </div>
           </Fragment>
         );
