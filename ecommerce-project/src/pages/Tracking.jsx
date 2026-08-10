@@ -1,9 +1,21 @@
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router';
 import { Header } from '../components/Header';
 import './Tracking.css';
 
 export function Tracking( {cart} ){
     const {orderId, productId} = useParams();
+    const [order, setOrder] = useState([])
+
+    useEffect(() => {
+        const fetchTrackingData = async() => {
+            const response = await axios.get(`/api/orders/${orderId}?expand=products`)
+            setOrder(response.data)
+        }
+
+        fetchTrackingData()
+    }, [orderId])
 
     return(
         <>
