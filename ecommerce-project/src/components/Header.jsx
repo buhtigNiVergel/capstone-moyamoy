@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import searchIcon from '../assets/images/icons/search-icon.png'
 import cartIcon from '../assets/images/icons/cart-icon.png'
 import './Header.css';
 
 export function Header( {cart} ){
+    const navigate = useNavigate();
     const [search, setSearch] = useState('');
 
     const updateSearchInput = (event) => {
@@ -12,7 +13,7 @@ export function Header( {cart} ){
     };
 
     const searchProducts = () => {
-        console.log(search);
+        navigate(`/?search=${search}`);
     };
 
     let totalQuantity = 0;
@@ -24,12 +25,12 @@ export function Header( {cart} ){
         <>
             <div class="header">
             <div class="left-section">
-                <NavLink href="/" class="header-link">
+                <Link href="/" class="header-link">
                 <img class="logo"
                     src="images/logo-white.png" />
                 <img class="mobile-logo"
                     src="images/mobile-logo-white.png" />
-                </NavLink>
+                </Link>
             </div>
 
             <div class="middle-section">
@@ -43,10 +44,10 @@ export function Header( {cart} ){
             </div>
 
             <div class="right-section">
-                <NavLink class="orders-link header-link" to="/orders">
+                <Link class="orders-link header-link" to="/orders">
 
                     <span class="orders-text">Orders</span>
-                </NavLink>
+                </Link>
 
                 <a class="cart-link header-link" href="/checkout">
                 <img class="cart-icon" src={cartIcon} />
