@@ -1,9 +1,20 @@
+import { useState } from 'react';
 import { NavLink } from 'react-router';
 import searchIcon from '../assets/images/icons/search-icon.png'
 import cartIcon from '../assets/images/icons/cart-icon.png'
 import './Header.css';
 
 export function Header( {cart} ){
+    const [search, setSearch] = useState('');
+
+    const updateSearchInput = (event) => {
+        setSearch(event.target.value);
+    };
+
+    const searchProducts = () => {
+        console.log(search);
+    };
+
     let totalQuantity = 0;
 
     cart.forEach(cartItem => {
@@ -22,9 +33,11 @@ export function Header( {cart} ){
             </div>
 
             <div class="middle-section">
-                <input class="search-bar" type="text" placeholder="Search" />
+                <input className="search-bar" type="text" placeholder="Search"
+                        value={search} onChange={updateSearchInput} />
 
-                <button class="search-button">
+                <button className="search-button"
+                        onClick={searchProducts}>
                 <img class="search-icon" src={searchIcon} />
                 </button>
             </div>
