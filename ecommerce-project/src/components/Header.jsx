@@ -29,33 +29,40 @@ export function Header( {cart} ){
             <div class="left-section">
                 <Link href="/" class="header-link">
                 <img class="logo"
+                    data-testid="header-logo"
                     src="images/logo-white.png" />
                 <img class="mobile-logo"
+                    data-testid="header-mobile-logo"
                     src="images/mobile-logo-white.png" />
                 </Link>
             </div>
 
             <div class="middle-section">
                 <input className="search-bar" type="text" placeholder="Search"
-                        value={search} onChange={updateSearchInput} />
+                        value={search} 
+                        onChange={updateSearchInput} 
+                        data-testid="header-search-bar"/>
 
                 <button className="search-button"
-                        onClick={searchProducts}>
+                        onClick={searchProducts}
+                        data-testid="header-search-button">
                 <img class="search-icon" src={searchIcon} />
                 </button>
             </div>
 
             <div class="right-section">
-                <Link class="orders-link header-link" to="/orders">
+                <Link class="orders-link header-link" to="/orders"
+                     data-testid="header-orders-link">
 
                     <span class="orders-text">Orders</span>
                 </Link>
 
-                <a class="cart-link header-link" href="/checkout">
+                <Link class="cart-link header-link" to="/checkout" 
+                    data-testid="header-cart-link">
                 <img class="cart-icon" src={cartIcon} />
                 <div class="cart-quantity">{totalQuantity}</div>
                 <div class="cart-text">Cart</div>
-                </a>
+                </Link>
             </div>
             </div>
         </>
